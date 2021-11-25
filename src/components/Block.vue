@@ -1,10 +1,29 @@
 <template>
-  <button class="reaction">Click me!</button>
+  <!-- component renders if showBlock is true -->
+  <button class="reaction" v-if="showBlock">Click me!</button>
 </template>
 
 <script>
 export default {
+  // props specified in parent component
   props: ["time"],
+
+  // component data
+  data() {
+    return {
+      showBlock: false,
+    };
+  },
+
+  // life cycle hook that fires when component is mounted
+  mounted() {
+    // set a timeout equal to the random time generated
+    // change showBlock to true after the time passes (button will appear on the screen)
+    setTimeout(() => {
+      this.showBlock = true;
+      console.log(this.time);
+    }, this.time);
+  },
 };
 </script>
 

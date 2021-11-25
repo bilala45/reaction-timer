@@ -1,13 +1,19 @@
 <template>
+  <!-- title -->
   <h1>Reaction Timer</h1>
+
+  <!-- button to start game -->
+  <!-- add attribute to disable button when user is playing -->
   <button @click="startGame" class="play" :disabled="isPlaying">play</button>
   <br />
+
   <!-- display Block component when isPlaying is true (when user is playing game) -->
   <!-- dynamically bind time to time attribute  -->
   <Block v-if="isPlaying" :time="time" />
 </template>
 
 <script>
+// import child Vue components
 import Block from "./components/Block.vue";
 import Results from "./components/Results.vue";
 
@@ -16,6 +22,7 @@ export default {
 
   // imported child Vue components
   components: { Block, Results },
+
   // data attributes (must be in a data function)
   data() {
     return {
@@ -25,6 +32,7 @@ export default {
       time: null,
     };
   },
+
   methods: {
     // method to run when user clicks button to play game
     startGame() {
@@ -32,8 +40,6 @@ export default {
       this.isPlaying = true;
       // generate a random number between 2-5 that will be our game delay
       this.time = Math.round(2000 + Math.random() * 3000);
-      console.log(this.time);
-      console.log(this.isPlaying);
     },
   },
 };
