@@ -1,8 +1,8 @@
-# reaction-timer
+# Reaction Timer
 
 ## About
 
-A reaction timer game built using Vue.js
+A reaction timer game built using Vue.js, a front end JavaScript framework.
 
 ## Project setup
 
