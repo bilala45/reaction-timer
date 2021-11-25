@@ -1,6 +1,9 @@
 <template>
   <!-- component renders if showBlock is true -->
-  <button class="reaction" v-if="showBlock">Click me!</button>
+  <!-- timer begins atutomatically after block appears and stops when block is clicked -->
+  <button class="reaction" v-if="showBlock" @click="stopTimer">
+    Click me!
+  </button>
 </template>
 
 <script>
@@ -12,6 +15,8 @@ export default {
   data() {
     return {
       showBlock: false,
+      timer: null,
+      reactionTime: 0,
     };
   },
 
@@ -21,8 +26,24 @@ export default {
     // change showBlock to true after the time passes (button will appear on the screen)
     setTimeout(() => {
       this.showBlock = true;
-      console.log(this.time);
+      this.startTimer();
     }, this.time);
+  },
+
+  methods: {
+    // function that runs after the user starts the game
+    startTimer() {
+      // callback function runs every 10 ms (updates reaction time)
+      this.timer = setInterval(() => {
+        this.reactionTime += 10;
+        console.log(this.reactionTime);
+      }, 10);
+    },
+
+    // stops execution of setInterval
+    stopTimer() {
+      clearInterval(this.timer);
+    },
   },
 };
 </script>
