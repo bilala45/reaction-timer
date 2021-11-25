@@ -1,5 +1,5 @@
 <template>
-  <p>Reaction time: {{ score }} ms</p>
+  <p class="result">Reaction time: {{ score }} ms</p>
 </template>
 
 <script>
@@ -9,4 +9,8 @@ export default {
 </script>
 
 <style>
+.result {
+  margin-top: 100px;
+  font-size: 30px;
+}
 </style>

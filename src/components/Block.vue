@@ -55,9 +55,10 @@ export default {
   border: none;
   color: white;
   margin-top: 50px;
-  padding: 50px 100px;
+  padding: 100px 200px;
   border-radius: 10px;
   text-transform: uppercase;
+  font-size: 30px;
 }
 
 .reaction:hover {
