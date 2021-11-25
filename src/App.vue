@@ -1,7 +1,10 @@
 <template>
   <h1>Reaction Timer</h1>
   <button @click="startGame" class="play" :disabled="isPlaying">play</button>
-  <Block />
+  <br />
+  <!-- display Block component when isPlaying is true (when user is playing game) -->
+  <!-- dynamically bind time to time attribute  -->
+  <Block v-if="isPlaying" :time="time" />
 </template>
 
 <script>
@@ -58,5 +61,13 @@ export default {
 
 .play:hover {
   cursor: pointer;
+}
+
+.play:disabled {
+  background-color: #12a5a571;
+}
+
+.play:disabled:hover {
+  cursor: not-allowed;
 }
 </style>
