@@ -9,7 +9,11 @@
 
   <!-- display Block component when isPlaying is true (when user is playing game) -->
   <!-- dynamically bind time to time attribute  -->
-  <Block v-if="isPlaying" :time="time" />
+  <!-- custom event from child Block that calls endGame method -->
+  <Block v-if="isPlaying" :time="time" @recordTime="endGame" />
+
+  <!-- bind score as a prop to Results template -->
+  <Results v-if="score" :score="score" />
 </template>
 
 <script>
@@ -30,6 +34,7 @@ export default {
       isPlaying: false,
       // records delay before block appears
       time: null,
+      score: null,
     };
   },
 
@@ -38,8 +43,16 @@ export default {
     startGame() {
       // set isPlaying to true
       this.isPlaying = true;
+      // set score back to null
+      this.score = null;
       // generate a random number between 2-5 that will be our game delay
       this.time = Math.round(2000 + Math.random() * 3000);
+    },
+
+    // takes in reactionTime, which is emitted by the Block child component
+    endGame(reactionTime) {
+      this.score = reactionTime;
+      this.isPlaying = false;
     },
   },
 };

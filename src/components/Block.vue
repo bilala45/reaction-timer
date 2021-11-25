@@ -36,13 +36,14 @@ export default {
       // callback function runs every 10 ms (updates reaction time)
       this.timer = setInterval(() => {
         this.reactionTime += 10;
-        console.log(this.reactionTime);
       }, 10);
     },
 
     // stops execution of setInterval
     stopTimer() {
       clearInterval(this.timer);
+      console.log(this.reactionTime);
+      this.$emit("recordTime", this.reactionTime);
     },
   },
 };
@@ -53,7 +54,7 @@ export default {
   background-color: #12a5a5;
   border: none;
   color: white;
-  margin-top: 100px;
+  margin-top: 50px;
   padding: 50px 100px;
   border-radius: 10px;
   text-transform: uppercase;
